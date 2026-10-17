@@ -1,0 +1,62 @@
+{
+  "packaging_date": "2026-10-15",
+  "scope": "Source packaging and synthetic CPU validation only; original dataset/Q assets were not supplied.",
+  "unittest": {
+    "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python -m unittest discover -s tests -v",
+    "tests": 68,
+    "status": "PASS"
+  },
+  "pytest": {
+    "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python -m pytest -q",
+    "tests": 68,
+    "subtests": 93,
+    "status": "PASS",
+    "warnings": "4 inherited pandas fillna(method=...) deprecation warnings; pandas is constrained below version 3."
+  },
+  "original_archive_comparison": {
+    "status": "PASS",
+    "initial_state_entries": 115,
+    "gradient_entries": 74,
+    "exact_equal": [
+      "seeded parameter values",
+      "state-dict keys",
+      "initial RNG state",
+      "nonzero-perturbed prediction outputs",
+      "nonzero-perturbed parameter gradients"
+    ],
+    "note": "Original code used an equivalent tuple-helper import shim to isolate the unrelated torchvision import failure. No forecast code was modified in that comparison."
+  },
+  "profiles": {
+    "status": "PASS",
+    "profiles_exactly_equal_to_original": 52
+  },
+  "synthetic_cpu_training_replay": {
+    "status": "PASS",
+    "epochs": 1,
+    "checkpoint_count": 1,
+    "validation_samples": 145,
+    "test_samples": 385,
+    "identity_Q_fixture": true,
+    "loader_workers": 0,
+    "note": "Small overridden fixture dimensions and random series, not a paper configuration or benchmark score."
+  },
+  "gpu_validation": {
+    "hardware_tested": false,
+    "external_visibility_regression": "PASS (environment/device selection test)"
+  },
+  "not_verified": [
+    "GPU training trajectory or performance",
+    "original Q generation and train boundary",
+    "paper benchmark scores",
+    "final manuscript protocol alignment",
+    "complete upstream licensing provenance"
+  ],
+  "asset_collection": {
+    "real_server_assets_available": false,
+    "unit_tests": 18,
+    "synthetic_portable_replay": "PASS; recorded and replayed MSE/MAE differences were zero on a synthetic CPU fixture",
+    "note": "Synthetic checkpoints/Q/results are excluded from deliverables.",
+    "v3_scope": "PEMSD7/PEMS-BAY asset collection and independent depth studies; synthetic fixtures only. Original 52 training profiles unchanged.",
+    "v3_tests": "Main/depth isolation; PEMSD7/PEMS-BAY; grouped means; disk-space preflight; explicit replay selection; Git LFS routing verified."
+  }
+}
