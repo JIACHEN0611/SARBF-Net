@@ -1,10 +1,7 @@
-# Citation status
+# Citation
 
-SARBF-Net expands to **Selective Anchored Retrieval & Balanced Feedback Network**.
-The paper's author list, final title, venue, publication year and DOI/arXiv ID
-were not supplied in this code archive. No bibliographic record has been invented.
+SARBF-Net: **Selective Anchored Retrieval & Balanced Feedback Network**.
 
-Once the paper is available, the repository owner can add its verified BibTeX
-and `CITATION.cff`. Until then, cite the actual GitHub repository URL and the
-specific release tag/commit used. A repository URL should be added only after
-that repository exists; the instructions in `docs/GITHUB_zh-CN.md` use examples.
+For the code, cite [JIACHEN0611/SARBF-Net](https://github.com/JIACHEN0611/SARBF-Net), with the commit or release tag actually used. The trained main-model assets are published under tag `v1.0.0`; a later main-branch source update does not change that tagged snapshot.
+
+Paper BibTeX will be added with the final publication metadata. Third-party model and utility sources are credited in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
