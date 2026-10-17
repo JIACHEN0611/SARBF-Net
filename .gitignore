@@ -33,3 +33,6 @@ Thumbs.db
 !/artifacts/checkpoints/**/*.pth
 /replay_output/
 !/artifacts/studies/**/checkpoints/**/*.pth
+
+.worktrees/
+.superpowers/
