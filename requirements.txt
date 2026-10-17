@@ -1,0 +1,14 @@
+# Install a PyTorch build suitable for your hardware first; see README.md.
+torch>=2.2,<3
+numpy>=1.26,<3
+pandas>=2.1,<3
+scipy>=1.11,<2
+scikit-learn>=1.3,<2
+matplotlib>=3.8,<4
+fvcore==0.1.5.post20221221
+einops>=0.7,<1
+reformer-pytorch==1.4.4
+openpyxl>=3.1,<4
+seaborn>=0.13,<1
+patool>=2,<5
+tqdm>=4.66,<5
