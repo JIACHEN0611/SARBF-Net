@@ -2,7 +2,7 @@
 
 from layers.CosineHistoricalSelector import CosineHistoricalSelector
 from layers.SelectiveAnchoredLongContext import anchor_normalize_past
-from model.OLinear_SALCM_BCIF_OutputFold import Model as OutputFoldModel
+from model.components.folded_head_model import Model as OutputFoldModel
 
 
 class Model(OutputFoldModel):
