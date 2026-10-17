@@ -1,0 +1,22 @@
+{
+  "ablations/models/OLinear_SALCM_BCIF_OutputFold_NoMass.py": "cde64c948af865176a843bd4f0202c76892994749b74ec0245f62875599e9e72",
+  "ablations/models/OLinear_SALCM_BCIF_OutputFold_Unbalanced.py": "6bd8d8986f639dfa38287858ea07647c61ff38ac0dbfee3dd8700f9ac349fc98",
+  "layers/BalancedCrossIntraFeedback.py": "7f91cbea059300ec6f3d71fe1e1bd3eb843e80a933d5d3b1f2158a2b591ba015",
+  "layers/CosineHistoricalSelector.py": "e0b7bad5cff74b0958d55be00427ac6d5f967a784f1f7867ed749838927a2d0b",
+  "layers/Embed.py": "3581b45661b8e10ae40995fef5f0a4db9cc19089a04d2870eba79f5c47bce417",
+  "layers/FANLayer.py": "14fc0ee441d452102f85f944ea78142bfdbc885ba4d54f2b0e735381e25278ef",
+  "layers/RevIN.py": "9924ef62981c71cdb24395c502379475aa072d01b5c298d8f4aad1a0afbe7820",
+  "layers/SAER.py": "e2bc116bbb78ff7d4dd9ed8cfa66900bbf45ca1e8a50d5286e834e1bac0fbfd4",
+  "layers/SafePruneFrontend.py": "a7a8bc957761cab5039c009a848ee2f6a0aec0a715ee172bf0ef8e5ff29c6ca8",
+  "layers/SelectiveAnchoredLongContext.py": "d440e63034225939471b57349bdae6442e937201d1652a6102b5f4589eb00e86",
+  "layers/SelfAttention_Family.py": "f8494df5681c3f998e41811547b196a2e102c8486a88af620907e095ca61f61e",
+  "layers/Transformer_EncDec.py": "4edaf22516b8ff26475655c2d86fde7f680546893b02d9fade324ce966e66a6f",
+  "layers/newLinear.py": "e8e2585140d534a11dbfc8503c5b855b2fea1b0f0e0c8432f1d344bf83e8e52d",
+  "model/OLinear.py": "625a41c3580e83a0a6a8c95c238dfdff557864fb8610c224b85a9eafd9b8547b",
+  "model/OLinear_SALCM.py": "372a922cc1980540ce5006c001881d49a81be7974f708ddf6aec14c0c5f519e5",
+  "model/OLinear_SALCM_BCIF.py": "468d4b3bcc0f5d2ed05022b515aeb38454ea1fa85b19d4e21edb6a182693c312",
+  "model/OLinear_SALCM_BCIF_NoDiag.py": "6d035ae3baa12d91d01c49ebecab82e89ae7f150e18f14279a3a899b331cbb05",
+  "model/OLinear_SALCM_BCIF_OutputFold.py": "6957c466fed85a10b3cb208c52a2a8c2f9fc04aa1174aa750bfd22e7a80a4926",
+  "model/SARBF_Net.py": "18d46094937115276d4068d61fc50a208b33bbff2cdd70dbd393a2f88dae15ea",
+  "model/SA_LCM.py": "3fb1ce1f2f42c05d4e1b4c841de55687b8f2c1e7aa7b87b56af57aa62273fa84"
+}

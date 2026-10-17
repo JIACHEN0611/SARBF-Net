@@ -1,62 +1,177 @@
 {
-  "packaging_date": "2026-10-15",
-  "scope": "Source packaging and synthetic CPU validation only; original dataset/Q assets were not supplied.",
-  "unittest": {
-    "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python -m unittest discover -s tests -v",
-    "tests": 68,
-    "status": "PASS"
+  "validation_date": "2026-10-17",
+  "scope": "Source integration, synthetic CPU checks and independent archived-source numerical comparisons.",
+  "environment": {
+    "python": "3.12.14",
+    "packages": {
+      "torch": "2.14.1+cpu",
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.8.0",
+      "matplotlib": "3.10.8",
+      "pytest": "9.1.1",
+      "einops": "0.8.2",
+      "reformer-pytorch": "1.4.4",
+      "fvcore": "0.1.5.post20221221"
+    },
+    "device": "cpu",
+    "threads": 1
   },
   "pytest": {
-    "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python -m pytest -q",
-    "tests": 68,
-    "subtests": 93,
+    "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python -m pytest tests -q",
     "status": "PASS",
-    "warnings": "4 inherited pandas fillna(method=...) deprecation warnings; pandas is constrained below version 3."
+    "tests": 104,
+    "subtests": 135,
+    "warnings": "4 inherited pandas fillna(method=...) FutureWarnings; pandas<3"
   },
-  "original_archive_comparison": {
+  "main_reference_comparison": {
     "status": "PASS",
-    "initial_state_entries": 115,
-    "gradient_entries": 74,
-    "exact_equal": [
-      "seeded parameter values",
-      "state-dict keys",
-      "initial RNG state",
-      "nonzero-perturbed prediction outputs",
-      "nonzero-perturbed parameter gradients"
+    "kind": "main",
+    "cases": 3,
+    "seeds": [
+      2021,
+      2022,
+      2023
     ],
-    "note": "Original code used an equivalent tuple-helper import shim to isolate the unrelated torchvision import failure. No forecast code was modified in that comparison."
+    "exact": true,
+    "strict_cross_loading": true,
+    "real_checkpoints_evaluated": false
   },
-  "profiles": {
+  "transfer_reference_comparison": {
     "status": "PASS",
-    "profiles_exactly_equal_to_original": 52
+    "kind": "transfer",
+    "cases": 30,
+    "seeds": [
+      2021,
+      2022,
+      2023
+    ],
+    "exact": true,
+    "strict_cross_loading": true,
+    "real_checkpoints_evaluated": false
   },
-  "synthetic_cpu_training_replay": {
+  "comparison_fields": [
+    "state keys and seeded initialization",
+    "RNG states",
+    "shared parameter identities",
+    "forward predictions",
+    "parameter gradients",
+    "state after one Adam step",
+    "strict cross-loading in both directions"
+  ],
+  "transfer_profiles": {
+    "status": "PASS",
+    "tasks": 720,
+    "sha256": "e56b1506b4c7ab4ed8fd7193ee171a36a3f01b2219ec8ee106fba62f4c892665"
+  },
+  "main_profiles": {
+    "configurations": 52,
+    "seeds": [
+      2021,
+      2022,
+      2023
+    ],
+    "changed": false
+  },
+  "cli_checks": [
+    {
+      "command": "python -m tools.sarbf_net.smoke",
+      "exit_code": 0,
+      "output_lines": 2
+    },
+    {
+      "command": "python -m tools.sarbf_net.run --task ETTm1-96 --dry-run",
+      "exit_code": 0,
+      "output_lines": 30
+    },
+    {
+      "command": "python -m tools.saer_transfer.smoke",
+      "exit_code": 0,
+      "output_lines": 6
+    },
+    {
+      "command": "python -m tools.saer_transfer.run --backbone DLinear --dataset ETTm1 --horizon 96 --seed 2021 --arm sa_frontend --dry-run",
+      "exit_code": 0,
+      "output_lines": 1
+    },
+    {
+      "command": "python -m experiments.saer_transfer.train --help",
+      "exit_code": 0,
+      "output_lines": 160
+    },
+    {
+      "command": "python -m tools.saer_transfer.summarize --help",
+      "exit_code": 0,
+      "output_lines": 10
+    },
+    {
+      "command": "python -m tools.sarbf_net.evaluate --help",
+      "exit_code": 0,
+      "output_lines": 20
+    },
+    {
+      "command": "python -m tools.saer_transfer.run --list-tasks",
+      "exit_code": 0,
+      "output_lines": 720
+    }
+  ],
+  "synthetic_training": {
     "status": "PASS",
     "epochs": 1,
-    "checkpoint_count": 1,
-    "validation_samples": 145,
-    "test_samples": 385,
-    "identity_Q_fixture": true,
-    "loader_workers": 0,
-    "note": "Small overridden fixture dimensions and random series, not a paper configuration or benchmark score."
+    "backbone": "DLinear",
+    "arm": "original",
+    "data": "synthetic local CSV fixture, not a benchmark",
+    "test": "tests/test_transfer_training.py"
   },
-  "gpu_validation": {
-    "hardware_tested": false,
-    "external_visibility_regression": "PASS (environment/device selection test)"
+  "package_checks": {
+    "status": "PASS",
+    "tests": "tests/test_source_package.py",
+    "coverage": [
+      "source-only exclusions",
+      "file hashes",
+      "exact baseline reconstruction from added/modified/deleted list",
+      "source symlink rejection"
+    ]
   },
   "not_verified": [
-    "GPU training trajectory or performance",
-    "original Q generation and train boundary",
-    "paper benchmark scores",
-    "final manuscript protocol alignment",
-    "complete upstream licensing provenance"
+    "Full real-dataset GPU training matrix",
+    "All v1.0.0 weights replayed on original data",
+    "Original Q generation and estimation boundary",
+    "Later server protocol_v2 equivalence",
+    "Final paper table accuracy and hardware efficiency",
+    "Complete inherited main-model upstream licensing provenance"
   ],
-  "asset_collection": {
-    "real_server_assets_available": false,
-    "unit_tests": 18,
-    "synthetic_portable_replay": "PASS; recorded and replayed MSE/MAE differences were zero on a synthetic CPU fixture",
-    "note": "Synthetic checkpoints/Q/results are excluded from deliverables.",
-    "v3_scope": "PEMSD7/PEMS-BAY asset collection and independent depth studies; synthetic fixtures only. Original 52 training profiles unchanged.",
-    "v3_tests": "Main/depth isolation; PEMSD7/PEMS-BAY; grouped means; disk-space preflight; explicit replay selection; Git LFS routing verified."
+  "asset_policy": {
+    "release": "v1.0.0",
+    "files_modified": false,
+    "real_weights_in_source_zip": false,
+    "five_backbone_trained_results_in_v1_assets": false
+  },
+  "fresh_code_review": {
+    "status": "COMPLETE",
+    "critical": 0,
+    "findings_fixed": 4,
+    "regression_cases": "6 cases observed failing before fixes; 11 targeted tests passed after fixes",
+    "fixes": [
+      "Shell entry from external working directories, preserving caller-relative paths",
+      "Relative interpreter path resolution before child working-directory change, preserving venv symlinks",
+      "Non-object metrics JSON treated as incomplete",
+      "Zero baseline improvement percentages left blank while raw metrics remain available"
+    ],
+    "whole_suite_after_fixes": "104 passed, 135 subtests passed, 4 inherited warnings"
+  },
+  "extracted_archive_checks": {
+    "status": "PASS",
+    "file_hashes": 173,
+    "smoke": [
+      "main forward/backward",
+      "five-backbone SAER forward/backward"
+    ],
+    "dry_run": [
+      "main ETTm1-96",
+      "DLinear ETTm1-96 +SAER"
+    ],
+    "external_cwd_shell_regression": "PASS in suite; final ZIP verification repeats this check"
   }
 }

@@ -1,6 +1,6 @@
 # Reproduction protocol
 
-This release preserves the supplied `SA_LCM_FULL_MATRIX_52TASK_FINAL_V1` profile
+This repository preserves the archived `SA_LCM_FULL_MATRIX_52TASK_FINAL_V1` profile
 values. It does not infer later experiments from conversation notes or substitute
 new hyperparameters. `tools/sa_lcm/matrix_profiles.py` remains the single
 profile source; `docs/task_profiles.json` is an exported reference snapshot.
@@ -58,22 +58,19 @@ Bitwise CPU comparisons cover seeded weights, RNG state, outputs and strict
 checkpoint loading. This does not establish identical GPU training trajectories
 across software versions or hardware.
 
-## Before claiming exact paper reproduction
+## Integrated transfer study
 
-The original archive excludes Q/data bytes, original environment export, trained
-checkpoints and final result JSONs. Collect these from the experiment server and
-cross-check the final manuscript's model/profile version. The separate SAER
-cross-backbone plugin study and later visualization packages are not part of this
-archive and have not been reconstructed here.
+The five-backbone study is described in [SAER_TRANSFER.md](SAER_TRANSFER.md). Its 720 presets match the archived package configuration by configuration. Independent CPU processes compare all five backbones, both groups and three seeds, including initialization, RNG state, shared parameters, forward predictions, gradients, one Adam step and strict state-dict loading in both directions. The main model is compared over the same three seeds. A one-epoch synthetic CPU training check exercises the transfer training CLI.
 
-A working CPU smoke test proves code execution on synthetic fixtures only.
-Record the actual server environment with:
+## Verification boundary
+
+These checks establish refactor compatibility in the recorded CPU environment. They do not establish identical GPU trajectories, reproduce all paper tables, or evaluate all v1.0.0 checkpoints on original datasets. Later server `protocol_v2` corrections are outside the archived transfer reference and require separate validation. Presets are not completed experimental results.
+
+The [v1.0.0 release](https://github.com/JIACHEN0611/SARBF-Net/releases/tag/v1.0.0) supplies main-model Q/checkpoint/result records. Raw data must match each record's hash for replay. The source archive contains no real datasets or trained weights. Historical source digests remain attached to historical records, while the current source manifest records this tree.
+
+Q matrices are deliberately absent from historical state dictionaries and must be supplied externally. The historical Q-generation procedure cannot be reconstructed from the source alone. Record the actual training environment alongside new experiments:
 
 ```bash
 python -m pip freeze > experiment-requirements.txt
 nvidia-smi > experiment-gpu.txt
 ```
-
-Retain those exports with the experiment assets. If a checkpoint's Q matrices
-are missing, the weights alone are insufficient: Q is deliberately absent from
-historical state dictionaries and must be supplied externally.

@@ -1,35 +1,19 @@
 # Naming and checkpoint compatibility
 
-| Purpose | Current name | Preserved compatibility name |
+| Purpose | Current entry | Compatibility entry |
 | --- | --- | --- |
-| Paper/model | SARBF-Net | SA-LCM / SA_LCM |
-| Python full-model entry | `model.SARBF_Net.Model` | `model.SA_LCM.Model` (alias) |
+| Full model | `model.SARBF_Net.Model` | `model.SA_LCM.Model` |
+| Runtime components | `model/components/` | five short `model/OLinear*.py` import bridges |
+| Frontend access | `model.saer` property | registered module/state prefix `sa_lcm.*` |
 | Experiment arm | `sarbf_net` | `sa_lcm`, `pair_free_fold` |
-| Frontend | SAER (`layers/SAER.py`) | `SelectiveAnchoredLongContext` implementation |
-| Frontend access in the full model | `model.saer` property | `model.sa_lcm` module/state prefix |
-| Backend | BCIF | `BalancedCrossIntraFeedback` |
-| Public launcher | `tools.sarbf_net.run` | `tools.sa_lcm_transport.run_pilot` |
-| Batch script | `scripts/run_sarbf_matrix.sh` | `scripts/run_sa_lcm_matrix.sh` |
+| Launcher | `tools.sarbf_net.run` | `tools.sa_lcm_transport.run_pilot` |
+| Transfer backbones | `model/backbones/` | original `Model(configs)` interfaces |
+| Transfer frontend | `model/saer_adapters/` | `backbone.*`, `frontend.*` state keys |
 
-The actual current forward implementation lives in `model/SARBF_Net.py`.
-`model/SA_LCM.py` is only a backwards-compatible import. New experiment records
-use `model=SARBF_Net`, `arm=sarbf_net`, and named output directories.
-The inherited runner's `PRIMARY_ARM` stays `sa_lcm` for its historical API; the
-new public runner always explicitly selects `sarbf_net`.
+The main entry directly inherits `model.components.folded_head_model.Model`; its runtime does not depend on the OLinear import bridges. Components retain the inherited orthogonal backbone, history refinement and feedback implementation. The legacy registry keeps earlier CLI names callable. OLinear remains part of the source lineage and is credited in THIRD_PARTY_NOTICES.md.
 
-The saved parameter prefix `sa_lcm.*` intentionally remains unchanged. Renaming
-that prefix or registering a second `self.saer` module could duplicate state
-keys or break strict loading of old checkpoints. The `saer` property exposes the
-paper name without changing registered parameters. The standalone `SAER` class
-uses the selected cosine selector; the full model preserves its original
-construction order before installing that selector.
+We retain `sa_lcm.*` in saved checkpoints. The `saer` property gives access under the current method name without registering another module or duplicating state keys. Q matrices are non-persistent buffers: they follow the model device but remain external to historical checkpoints.
 
-Legacy result architecture IDs and environment flags retain their old strings
-so old JSON/log readers remain usable. This is a packaging release of the same
-selected architecture, not a new experimental revision with new scores.
-The source-tree hash changes, as expected for modified source code.
+Transfer backbones and their versions of RevIN, attention and embedding layers have separate package paths. Importing them alongside the main model does not replace the main-model dependencies. The public transfer entries default to SAER; `arm=original` uses the recent 96 points from the same 768-point window and does not construct a frontend.
 
-`OLinear*.py` names identify inherited implementation paths and earlier
-ablation variants. Their retention records the backbone lineage and permits
-old checkpoint replay. A global string replacement would obscure provenance
-and change imports/state keys without improving the algorithm.
+Legacy architecture IDs and result records retain their original strings and hashes. The new source digest changes after relocation; historical records are not rewritten to conceal that change.
