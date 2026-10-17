@@ -2,8 +2,8 @@ import os
 import torch
 from ablations.models import (OLinear_SALCM_BCIF_OutputFold_NoMass,
                               OLinear_SALCM_BCIF_OutputFold_Unbalanced)
-from model import (SARBF_Net, SA_LCM, OLinear_SALCM_BCIF, OLinear_SALCM_BCIF_NoDiag,
-                   OLinear_SALCM_BCIF_OutputFold)
+from model import SARBF_Net, SA_LCM
+from model.legacy.registry import LEGACY_MODELS
 
 
 class Exp_Basic(object):
@@ -12,14 +12,14 @@ class Exp_Basic(object):
         self.model_dict = {
             'SARBF_Net': SARBF_Net,
             'SA_LCM': SA_LCM,
-            'OLinear_SALCM_BCIF_NoDiag': OLinear_SALCM_BCIF_NoDiag,
-            'OLinear_SALCM_BCIF_OutputFold': OLinear_SALCM_BCIF_OutputFold,
+            'OLinear_SALCM_BCIF_NoDiag': LEGACY_MODELS['OLinear_SALCM_BCIF_NoDiag'],
+            'OLinear_SALCM_BCIF_OutputFold': LEGACY_MODELS['OLinear_SALCM_BCIF_OutputFold'],
             'OLinear_SALCM_BCIF_OutputFold_NoMass':
                 OLinear_SALCM_BCIF_OutputFold_NoMass,
             'OLinear_SALCM_BCIF_OutputFold_Unbalanced':
                 OLinear_SALCM_BCIF_OutputFold_Unbalanced,
             # Kept for strict old-checkpoint replay; the runner exposes no BCIF arm.
-            'OLinear_SALCM_BCIF': OLinear_SALCM_BCIF,
+            'OLinear_SALCM_BCIF': LEGACY_MODELS['OLinear_SALCM_BCIF'],
         }
         self.device = self._acquire_device()
         self.model = self._build_model().to(self.device)
