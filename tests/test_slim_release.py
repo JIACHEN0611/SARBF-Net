@@ -78,6 +78,8 @@ class SlimSourceTests(unittest.TestCase):
         source_lock = json.loads((ROOT / "MODEL_LAYER_SHA256.json").read_text())
         protected = [name for name in RUNTIME_FILES
                      if name.startswith(("model/", "layers/", "ablations/models/"))]
+        protected = sorted(str(p.relative_to(ROOT)) for directory in ("model", "layers", "ablations/models")
+                           for p in (ROOT / directory).rglob("*.py"))
         self.assertEqual(set(source_lock), set(protected))
         for name in protected:
             with self.subTest(name=name):
@@ -149,11 +151,10 @@ class SlimSourceTests(unittest.TestCase):
         imported = {alias.name for node in ast.walk(tree)
                     if isinstance(node, ast.ImportFrom) and node.module == "model"
                     for alias in node.names}
-        self.assertEqual(imported, {
-            "SARBF_Net", "SA_LCM",
-            "OLinear_SALCM_BCIF", "OLinear_SALCM_BCIF_NoDiag",
-            "OLinear_SALCM_BCIF_OutputFold",
-        })
+        self.assertEqual(imported, {"SARBF_Net", "SA_LCM"})
+        from model.legacy.registry import LEGACY_MODELS
+        self.assertTrue({"OLinear_SALCM_BCIF", "OLinear_SALCM_BCIF_NoDiag",
+                         "OLinear_SALCM_BCIF_OutputFold"} <= set(LEGACY_MODELS))
         ablation_imported = {alias.name for node in ast.walk(tree)
                              if isinstance(node, ast.ImportFrom)
                              and node.module == "ablations.models"

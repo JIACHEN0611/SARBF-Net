@@ -114,7 +114,9 @@ class OutputFoldRegistryTests(unittest.TestCase):
         imported = {alias.name for node in ast.walk(tree)
                     if isinstance(node, ast.ImportFrom) and node.module == "model"
                     for alias in node.names}
-        self.assertIn("OLinear_SALCM_BCIF_OutputFold", imported)
+        from model.legacy.registry import LEGACY_MODELS
+        self.assertEqual(LEGACY_MODELS["OLinear_SALCM_BCIF_OutputFold"].__name__,
+                         "model.components.folded_head_model")
         self.assertIn("SA_LCM", imported)
 
 
