@@ -1,0 +1,6 @@
+﻿Backbone,MSE gain (%),MAE gain (%),MSE config. wins,MAE config. wins,MSE seed-pair wins,MAE seed-pair wins
+iTransformer,20.83,10.87,24/24,24/24,72/72,72/72
+CycleNet,25.21,14.55,24/24,23/24,71/72,68/72
+PatchTST,26.04,15.56,24/24,23/24,72/72,70/72
+DLinear,34.47,24.34,24/24,24/24,72/72,71/72
+TSMixer,8.05,4.38,24/24,23/24,69/72,69/72

@@ -1,0 +1,8 @@
+﻿Variant,ΔMSE (%),MSE worse tasks,MSE worse seed pairs,ΔMAE (%),MAE worse tasks,MAE worse seed pairs
+Full SARBF-Net,0.000,—,—,0.000,—,—
+w/o SAER (BCIF retained),+9.615,6/6,—,+5.207,5/6,—
+Recent-only backbone,+9.468,6/6,18/18,+5.108,5/6,15/18
+SAER w/o NULL,-0.209,2/6,8/18,-0.189,1/6,5/18
+SAER only (w/o BCIF),+0.285,6/6,13/18,+0.307,5/6,10/18
+BCIF w/o m modulation,-0.121,4/6,14/18,-0.067,4/6,12/18
+BCIF w/o self-term balancing,+0.502,4/6,9/18,+0.162,3/6,9/18

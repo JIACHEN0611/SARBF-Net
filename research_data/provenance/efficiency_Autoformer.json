@@ -1,0 +1,1424 @@
+{
+  "status": "complete",
+  "model": "Autoformer",
+  "display_name": "Autoformer",
+  "identity": {
+    "protocol": "ECL720-unified-v1-MSE-FP32",
+    "model": "Autoformer",
+    "model_configuration": {
+      "task_name": "long_term_forecast",
+      "seq_len": 96,
+      "label_len": 48,
+      "pred_len": 720,
+      "enc_in": 321,
+      "dec_in": 321,
+      "c_out": 321,
+      "d_model": 512,
+      "d_ff": 2048,
+      "e_layers": 2,
+      "d_layers": 1,
+      "n_heads": 8,
+      "dropout": 0.1,
+      "factor": 3,
+      "activation": "gelu",
+      "embed": "timeF",
+      "freq": "h",
+      "output_attention": false,
+      "moving_avg": 25,
+      "distil": true,
+      "patch_len": 16,
+      "stride": 8,
+      "version": "fourier",
+      "mode_select": "random",
+      "modes": 32
+    },
+    "data_configuration": {
+      "features": "M",
+      "label_len": 48,
+      "seq_len": 96,
+      "long_len": 768,
+      "pred_len": 720,
+      "embed": "timeF",
+      "freq": "h",
+      "train_ratio": 1.0
+    },
+    "dataset_sha256": "7e45845d54c5219bad0ae6bc1b5316cf8ff9cead5d33fa998a5a51c2e4a497ad",
+    "q_file_sha256": {
+      "electricity_192_ratio0.7.npy": "e11376d665cf9824469b5026fa1d34b912c169f84c81d3238e4db65dfa07acfc",
+      "electricity_336_ratio0.7.npy": "f602d084c3c88c5cea70a8216901391a64bdba3c60bbbb8d5b86adf989ea657a",
+      "electricity_720_ratio0.7.npy": "1003f36e75ebbe7afea5ca57f5c2d09f24363401984e98d0803fc55584e95945",
+      "electricity_96_ratio0.7.npy": "c680221e235d96a99ff7676aa78bb11c225432602356c32d4c5d3619b9c8ff86"
+    },
+    "code_hash": "8b8affcb7c722c0aeed1e29e36ded47b920abdccc1c7600e2fcbf82190809263",
+    "measurement_code_hash": "e8351198d29dc1ce66f2ee13489e0e3d2b425524c0eae2e6ae9773c820b7efec",
+    "dataset_code_hash": "e59969f508907ff133863a21699a510a443aba3c639c93f7ebfc419965ec99ee",
+    "batch_size": 32,
+    "num_workers": 0,
+    "cpu_threads": 8,
+    "precision": "FP32; TF32 disabled",
+    "optimizer": "Adam",
+    "loss": "MSE",
+    "learning_rate": 0.0005,
+    "seed": 2021,
+    "warmup_epochs": 1,
+    "measured_epochs": 3,
+    "torch_version": "2.8.0+cu128",
+    "cuda_version": "12.8",
+    "gpu_uuid": "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "driver": "595.91.07",
+    "allow_remote_desktop": true,
+    "train_samples": 16925
+  },
+  "parameters": 12143937,
+  "real_scalar_parameters": 12143937,
+  "parameters_M": 12.143937,
+  "macs": 4421763072.0,
+  "macs_G": 4.421763072,
+  "profile": {
+    "macs": 4421763072.0,
+    "matrix_conv_macs": 4405542912.0,
+    "extra_macs": {
+      "retrieval_macs": 0,
+      "lag_aggregation_macs": 16220160,
+      "complex_matrix_extra_macs": 0
+    },
+    "matrix_operation_flops": {
+      "Autoformer": {
+        "aten.convolution": 5635866624,
+        "aten.mm": 1916141568,
+        "aten.addmm": 1259077632
+      },
+      "Autoformer.enc_embedding.value_embedding.tokenConv": {
+        "aten.convolution": 94666752
+      },
+      "Autoformer.enc_embedding.value_embedding": {
+        "aten.convolution": 94666752
+      },
+      "Autoformer.enc_embedding": {
+        "aten.convolution": 94666752,
+        "aten.mm": 393216
+      },
+      "Global": {
+        "aten.convolution": 5635866624,
+        "aten.mm": 1916141568,
+        "aten.addmm": 1259077632
+      },
+      "Autoformer.enc_embedding.temporal_embedding.embed": {
+        "aten.mm": 393216
+      },
+      "Autoformer.enc_embedding.temporal_embedding": {
+        "aten.mm": 393216
+      },
+      "Autoformer.encoder.attn_layers.0": {
+        "aten.mm": 150994944,
+        "aten.addmm": 50331648,
+        "aten.convolution": 402653184
+      },
+      "Autoformer.encoder.attn_layers.0.attention": {
+        "aten.mm": 150994944,
+        "aten.addmm": 50331648
+      },
+      "Autoformer.encoder": {
+        "aten.mm": 301989888,
+        "aten.addmm": 100663296,
+        "aten.convolution": 805306368
+      },
+      "Autoformer.encoder.attn_layers.0.attention.query_projection": {
+        "aten.mm": 50331648
+      },
+      "Autoformer.encoder.attn_layers.0.attention.key_projection": {
+        "aten.mm": 50331648
+      },
+      "Autoformer.encoder.attn_layers.0.attention.value_projection": {
+        "aten.mm": 50331648
+      },
+      "Autoformer.encoder.attn_layers.0.attention.out_projection": {
+        "aten.addmm": 50331648
+      },
+      "Autoformer.encoder.attn_layers.0.conv1": {
+        "aten.convolution": 201326592
+      },
+      "Autoformer.encoder.attn_layers.0.conv2": {
+        "aten.convolution": 201326592
+      },
+      "Autoformer.encoder.attn_layers.1.attention.query_projection": {
+        "aten.mm": 50331648
+      },
+      "Autoformer.encoder.attn_layers.1.attention": {
+        "aten.mm": 150994944,
+        "aten.addmm": 50331648
+      },
+      "Autoformer.encoder.attn_layers.1": {
+        "aten.mm": 150994944,
+        "aten.addmm": 50331648,
+        "aten.convolution": 402653184
+      },
+      "Autoformer.encoder.attn_layers.1.attention.key_projection": {
+        "aten.mm": 50331648
+      },
+      "Autoformer.encoder.attn_layers.1.attention.value_projection": {
+        "aten.mm": 50331648
+      },
+      "Autoformer.encoder.attn_layers.1.attention.out_projection": {
+        "aten.addmm": 50331648
+      },
+      "Autoformer.encoder.attn_layers.1.conv1": {
+        "aten.convolution": 201326592
+      },
+      "Autoformer.encoder.attn_layers.1.conv2": {
+        "aten.convolution": 201326592
+      },
+      "Autoformer.dec_embedding.value_embedding.tokenConv": {
+        "aten.convolution": 757334016
+      },
+      "Autoformer.dec_embedding.value_embedding": {
+        "aten.convolution": 757334016
+      },
+      "Autoformer.dec_embedding": {
+        "aten.convolution": 757334016,
+        "aten.mm": 3145728
+      },
+      "Autoformer.dec_embedding.temporal_embedding": {
+        "aten.mm": 3145728
+      },
+      "Autoformer.dec_embedding.temporal_embedding.embed": {
+        "aten.mm": 3145728
+      },
+      "Autoformer.decoder.layers.0.self_attention": {
+        "aten.mm": 1207959552,
+        "aten.addmm": 402653184
+      },
+      "Autoformer.decoder.layers.0.self_attention.query_projection": {
+        "aten.mm": 402653184
+      },
+      "Autoformer.decoder": {
+        "aten.mm": 1610612736,
+        "aten.addmm": 1158414336,
+        "aten.convolution": 3978559488
+      },
+      "Autoformer.decoder.layers.0": {
+        "aten.mm": 1610612736,
+        "aten.addmm": 905969664,
+        "aten.convolution": 3978559488
+      },
+      "Autoformer.decoder.layers.0.self_attention.key_projection": {
+        "aten.mm": 402653184
+      },
+      "Autoformer.decoder.layers.0.self_attention.value_projection": {
+        "aten.mm": 402653184
+      },
+      "Autoformer.decoder.layers.0.self_attention.out_projection": {
+        "aten.addmm": 402653184
+      },
+      "Autoformer.decoder.layers.0.cross_attention.query_projection": {
+        "aten.mm": 402653184
+      },
+      "Autoformer.decoder.layers.0.cross_attention": {
+        "aten.mm": 402653184,
+        "aten.addmm": 503316480
+      },
+      "Autoformer.decoder.layers.0.cross_attention.key_projection": {
+        "aten.addmm": 50331648
+      },
+      "Autoformer.decoder.layers.0.cross_attention.value_projection": {
+        "aten.addmm": 50331648
+      },
+      "Autoformer.decoder.layers.0.cross_attention.out_projection": {
+        "aten.addmm": 402653184
+      },
+      "Autoformer.decoder.layers.0.conv1": {
+        "aten.convolution": 1610612736
+      },
+      "Autoformer.decoder.layers.0.conv2": {
+        "aten.convolution": 1610612736
+      },
+      "Autoformer.decoder.layers.0.projection": {
+        "aten.convolution": 757334016
+      },
+      "Autoformer.decoder.projection": {
+        "aten.addmm": 252444672
+      }
+    },
+    "forward_operator_calls": {
+      "aten.mean.dim": 11,
+      "aten.unsqueeze.default": 407,
+      "aten.repeat.default": 155,
+      "aten.zeros.default": 1,
+      "aten.slice.Tensor": 224,
+      "aten.cat.default": 12,
+      "aten.permute.default": 35,
+      "aten.avg_pool2d.default": 8,
+      "aten.squeeze.dim": 8,
+      "aten.sub.Tensor": 10,
+      "aten.new_empty.default": 3,
+      "aten.copy_.default": 9,
+      "aten.convolution.default": 9,
+      "aten.transpose.int": 9,
+      "aten.t.default": 19,
+      "aten.view.default": 42,
+      "aten.mm.default": 12,
+      "aten._unsafe_view.default": 12,
+      "aten.add.Tensor": 151,
+      "aten.clone.default": 20,
+      "aten._fft_r2c.default": 8,
+      "aten._conj.default": 4,
+      "aten.mul.Tensor": 68,
+      "aten._fft_c2r.default": 4,
+      "aten.arange.default": 4,
+      "aten._to_copy.default": 4,
+      "aten.topk.default": 4,
+      "aten._softmax.default": 4,
+      "aten.detach.default": 4,
+      "aten.zeros_like.default": 5,
+      "aten.select.int": 128,
+      "aten.gather.default": 64,
+      "aten.addmm.default": 7,
+      "aten.gelu.default": 3,
+      "aten.native_layer_norm.default": 2
+    },
+    "fft_operator_calls": {
+      "aten._fft_r2c.default": 8,
+      "aten._fft_c2r.default": 4
+    },
+    "mac_scope": "One-sample eval forward real matrix/conv MACs, plus similarity/retrieval and lag aggregation MACs; complex matrix MACs converted to four real MACs. FFT, spectral elementwise products, normalization, activation, bias addition and other non-MAC operations are excluded. Not total FLOPs."
+  },
+  "training_seconds_epoch_mean": 40.97211664930607,
+  "training_seconds_epoch_std": 0.1470936361830082,
+  "training_seconds_each_epoch": [
+    40.865284903906286,
+    41.13988623395562,
+    40.9111788100563
+  ],
+  "training_peak_allocated_MiB": 6411.73828125,
+  "epochs": [
+    {
+      "epoch": 1,
+      "seconds": 40.914419789100066,
+      "samples": 16925,
+      "peak_allocated_MiB": 6411.73828125,
+      "last_batch_MSE": 0.24421317875385284,
+      "measured": false
+    },
+    {
+      "epoch": 2,
+      "seconds": 40.865284903906286,
+      "samples": 16925,
+      "peak_allocated_MiB": 6411.73828125,
+      "last_batch_MSE": 0.2978760004043579,
+      "measured": true
+    },
+    {
+      "epoch": 3,
+      "seconds": 41.13988623395562,
+      "samples": 16925,
+      "peak_allocated_MiB": 6411.73828125,
+      "last_batch_MSE": 0.29259932041168213,
+      "measured": true
+    },
+    {
+      "epoch": 4,
+      "seconds": 40.9111788100563,
+      "samples": 16925,
+      "peak_allocated_MiB": 6411.73828125,
+      "last_batch_MSE": 0.3778737187385559,
+      "measured": true
+    }
+  ],
+  "samples_each_epoch": [
+    16925,
+    16925,
+    16925
+  ],
+  "batches_each_epoch": 529,
+  "batch_size": 32,
+  "actual_history": 96,
+  "anchor_input": 96,
+  "output": 720,
+  "channels": 321,
+  "model_source": "Autoformer.py",
+  "python": "3.9.25 (main, Nov  3 2025, 22:33:05) \n[GCC 11.2.0]",
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+  "cpu_model": "Intel(R) Core(TM) i9-14900KF",
+  "gpu_state_start": {
+    "fields": "temperature_C, SM_clock_MHz, memory_clock_MHz, power_W, GPU_utilization_percent, total_memory_used_MiB",
+    "values": "48, 2557, 13801, 83.75, 0, 1852",
+    "error": ""
+  },
+  "gpu_state_end": {
+    "fields": "temperature_C, SM_clock_MHz, memory_clock_MHz, power_W, GPU_utilization_percent, total_memory_used_MiB",
+    "values": "63, 2535, 13801, 381.27, 89, 8480",
+    "error": ""
+  },
+  "gpu_audit": [
+    {
+      "time": "2026-10-08T12:20:02.136695+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 498"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:03.733067+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 1054"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:08.848495+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:13.934729+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:19.014361+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:24.111620+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:29.248887+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:34.395869+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:39.504617+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:44.642306+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:45.168470+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:45.224671+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:50.345814+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:20:55.430382+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:00.581965+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:05.734525+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:10.825263+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:15.972717+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:21.051286+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:26.155012+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:26.609019+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:26.662217+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:31.749156+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:36.839560+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:41.985094+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:47.132859+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:52.213672+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:21:57.303274+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:02.429687+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:07.548638+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:08.309201+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:08.368437+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:13.469513+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:18.559329+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:23.701227+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:28.847244+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:33.926066+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:39.019489+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:44.172345+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:49.267564+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-08T12:22:49.795265+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 2847807",
+          "python",
+          " 7682"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    }
+  ],
+  "completed_at": "2026-10-08T12:22:49.893579+08:00",
+  "timing_scope": "Full train epoch including common long-context data loading, required CPU-to-GPU transfers, decoder input construction, forward, MSE, backward and Adam. Excludes initialization, MAC profiling, validation, checkpoints and nvidia-smi audit calls.",
+  "memory_scope": "PyTorch process peak allocated during measured training epochs; includes model, optimizer, inputs and activations; excludes CUDA context, allocator reserve and desktop/other processes."
+}

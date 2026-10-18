@@ -1,0 +1,15 @@
+﻿Dataset,Domain,Sampling interval,Total length,Variables,Split,Description
+ETTh1,Electricity,1 hour,"17,420",7,6:2:2,Transformer load and oil temperature (unit 1)
+ETTh2,Electricity,1 hour,"17,420",7,6:2:2,Transformer load and oil temperature (unit 2)
+ETTm1,Electricity,15 min,"69,680",7,6:2:2,Transformer load and oil temperature (unit 1)
+ETTm2,Electricity,15 min,"69,680",7,6:2:2,Transformer load and oil temperature (unit 2)
+ECL,Electricity,1 hour,"26,304",321,7:1:2,Electricity consumption of 321 users
+Traffic,Traffic,1 hour,"17,544",862,7:1:2,Road occupancy from 862 sensors
+Weather,Weather,10 min,"52,696",21,7:1:2,"Meteorological observations, including temperature and pressure"
+Solar,Energy,10 min,"52,560",137,7:1:2,Solar power generation from 137 photovoltaic plants
+PEMS03,Traffic,5 min,"26,209",358,6:2:2,Traffic flow from road sensors
+PEMS04,Traffic,5 min,"16,992",307,6:2:2,Traffic flow from road sensors
+PEMS07,Traffic,5 min,"28,224",883,6:2:2,Traffic flow from road sensors
+PEMS08,Traffic,5 min,"17,856",170,6:2:2,Traffic flow from road sensors
+PEMSD7,Traffic,5 min,"12,672",228,7:1:2,Traffic speed from 228 sensors
+PEMS-BAY,Traffic,5 min,"52,116",325,7:1:2,Traffic speed from 325 sensors

@@ -1,0 +1,28 @@
+{
+  "task": "Weather-192",
+  "data_sha256": "8399b2ee2242dca09da6570a41bfdfe714f556eb93365dfce6b24bef27b8b6c1",
+  "channel": 1,
+  "variable": "T (degC)",
+  "test_count": 10348,
+  "horizon": 192,
+  "rule": "nearest 25th/75th quantile of recent96 first-difference RMS; stride=horizon; input only",
+  "visual_seed": 2021,
+  "windows": [
+    {
+      "kind": "calm",
+      "index": 4992,
+      "channel": 1,
+      "past_diff_rms": 0.013345656215844751,
+      "past_quantile_target": 0.25,
+      "global_first_target": 47149
+    },
+    {
+      "kind": "volatile",
+      "index": 5376,
+      "channel": 1,
+      "past_diff_rms": 0.025874841654212125,
+      "past_quantile_target": 0.75,
+      "global_first_target": 47533
+    }
+  ]
+}

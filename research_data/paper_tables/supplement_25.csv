@@ -1,0 +1,4 @@
+﻿Operation,Additional weights,Dominant time complexity
+Relation residuals and balanced messages,0 (relations reused),O(B C² d)
+Low-rank feedback projection,2 d r,O(B C d r)
+Entire BCIF interface,2 d r,O(B C² d+B C d r)

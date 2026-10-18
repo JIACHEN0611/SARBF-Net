@@ -1,0 +1,9 @@
+﻿Model,Model,iTransformer,iTransformer,iTransformer,iTransformer,iTransformer,iTransformer,CycleNet,CycleNet,CycleNet,CycleNet,CycleNet,CycleNet,PatchTST,PatchTST,PatchTST,PatchTST,PatchTST,PatchTST
+,,Original,Original,+ SAER,+ SAER,Improve ↑,Improve ↑,Original,Original,+ SAER,+ SAER,Improve ↑,Improve ↑,Original,Original,+ SAER,+ SAER,Improve ↑,Improve ↑
+Dataset,F,MSE,MAE,MSE,MAE,MSE,MAE,MSE,MAE,MSE,MAE,MSE,MAE,MSE,MAE,MSE,MAE,MSE,MAE
+ETTm1,Avg,0.408,0.412,0.372,0.396,8.9%,3.9%,0.388,0.397,0.371,0.394,4.3%,0.8%,0.382,0.395,0.366,0.390,4.2%,1.4%
+ECL,Avg,0.175,0.267,0.160,0.257,8.9%,3.8%,0.169,0.261,0.160,0.255,5.1%,2.2%,0.191,0.276,0.168,0.260,12.3%,5.7%
+Solar,Avg,0.265,0.293,0.218,0.277,17.6%,5.5%,0.308,0.308,0.211,0.273,31.6%,11.2%,0.250,0.282,0.198,0.254,20.8%,10.0%
+Weather,Avg,0.261,0.282,0.236,0.270,9.8%,4.1%,0.256,0.280,0.227,0.266,11.1%,5.0%,0.257,0.280,0.229,0.265,10.9%,5.1%
+PEMS03,Avg,0.200,0.298,0.114,0.227,42.6%,24.0%,0.201,0.296,0.090,0.192,55.0%,35.0%,0.225,0.312,0.094,0.200,58.1%,36.0%
+PEMS07,Avg,0.170,0.270,0.082,0.190,51.4%,29.6%,0.187,0.286,0.072,0.169,61.5%,40.9%,0.241,0.322,0.079,0.183,67.0%,43.2%

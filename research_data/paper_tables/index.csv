@@ -1,0 +1,36 @@
+﻿file,source_document,native_table_index,caption,rows,columns
+main_01.csv,SARBF-Net_Manuscript.docx,1,"Table 1. Single-sample forward costs. C: variables; E: embedding width; d: backbone width; dff: head width; r: feedback rank; F: horizon; nhead: attention heads. Space covers principal activations and relation matrices, excluding parameters, optimizer states, and predictions. Head costs vary F with other widths fixed; the total row covers CSL and one BCIF interface.",7,3
+main_02.csv,SARBF-Net_Manuscript.docx,2,"Table 2. Average forecasting results on eight general datasets. All models use a backbone input length of 96. Results are averaged over forecasting horizons {96, 192, 336, 720}.",11,27
+main_03.csv,SARBF-Net_Manuscript.docx,3,"Table 3. Average forecasting results on six traffic datasets. All models use a backbone input length of 96. Results are averaged over forecasting horizons {12, 24, 48, 96}.",9,27
+main_04.csv,SARBF-Net_Manuscript.docx,4,"Table 4. Generality of SAER across forecasting backbones. The backbone input length is 96. MSE/MAE are averaged over three seeds and four forecasting horizons. Original, + SAER, and Improve denote the original model, the model with SAER, and the relative error reduction, respectively.",9,20
+main_05.csv,SARBF-Net_Manuscript.docx,5,Table 4 (continued). SAER results for DLinear and TSMixer.,9,14
+main_06.csv,SARBF-Net_Manuscript.docx,6,Table 5. Module ablation results (native main-manuscript table 6).,8,9
+supplement_01.csv,SARBF-Net_Supplementary_Material.docx,1,"Table A1. Results on ETTh1, ETTh2, ETTm1, and ETTm2, Part 1 of 4.",18,16
+supplement_02.csv,SARBF-Net_Supplementary_Material.docx,2,"Table A1 (continued). Results on ETTh1, ETTh2, ETTm1, and ETTm2, Part 2 of 4.",18,14
+supplement_03.csv,SARBF-Net_Supplementary_Material.docx,3,"Table A1 (continued). Results on Weather, Solar, Electricity, and Traffic, Part 3 of 4.",18,16
+supplement_04.csv,SARBF-Net_Supplementary_Material.docx,4,"Table A1 (continued). Results on Weather, Solar, Electricity, and Traffic, Part 4 of 4.",18,14
+supplement_05.csv,SARBF-Net_Supplementary_Material.docx,5,Table A2. Results by forecasting horizon on six traffic datasets.,26,10
+supplement_06.csv,SARBF-Net_Supplementary_Material.docx,6,Table B1. SAER improvements averaged across configurations and paired-seed wins. Each backbone includes 24 configurations and 72 seed pairs.,6,7
+supplement_07.csv,SARBF-Net_Supplementary_Material.docx,7,"Table B2. Full SAER results on general datasets, Part 1 of 6.",23,14
+supplement_08.csv,SARBF-Net_Supplementary_Material.docx,8,"Table B2 (continued). General datasets, Part 2 of 6.",23,14
+supplement_09.csv,SARBF-Net_Supplementary_Material.docx,9,"Table B2 (continued). General datasets, Part 3 of 6.",23,8
+supplement_10.csv,SARBF-Net_Supplementary_Material.docx,10,"Table B2 (continued). Traffic datasets, Part 4 of 6.",13,14
+supplement_11.csv,SARBF-Net_Supplementary_Material.docx,11,"Table B2 (continued). Traffic datasets, Part 5 of 6.",13,14
+supplement_12.csv,SARBF-Net_Supplementary_Material.docx,12,"Table B2 (continued). Traffic datasets, Part 6 of 6.",13,8
+supplement_13.csv,SARBF-Net_Supplementary_Material.docx,13,Table C1. Full three-seed results for DLinear.,10,9
+supplement_14.csv,SARBF-Net_Supplementary_Material.docx,14,Table C1 (continued). Full three-seed results for iTransformer.,10,9
+supplement_15.csv,SARBF-Net_Supplementary_Material.docx,15,"Table C2. SAER mechanism ablations. Values are three-seed means. Black bold marks the lowest mean for each backbone, task, and metric.",10,11
+supplement_16.csv,SARBF-Net_Supplementary_Material.docx,16,"Table D1. Three-seed ablations of the full model and six variants. Black bold marks the lowest mean across all variants for each task and metric. Δ is the error change relative to the full model, calculated from the six-decimal means shown here; positive values indicate higher error after ablation.",15,6
+supplement_17.csv,SARBF-Net_Supplementary_Material.docx,17,"Table D1. Three-seed ablations of the full model and six variants. Black bold marks the lowest mean across all variants for each task and metric. Δ is the error change relative to the full model, calculated from the six-decimal means shown here; positive values indicate higher error after ablation.",15,6
+supplement_18.csv,SARBF-Net_Supplementary_Material.docx,18,"Table D1. Three-seed ablations of the full model and six variants. Black bold marks the lowest mean across all variants for each task and metric. Δ is the error change relative to the full model, calculated from the six-decimal means shown here; positive values indicate higher error after ablation.",15,6
+supplement_19.csv,SARBF-Net_Supplementary_Material.docx,19,Table D2. Definitions of the full-model ablation variants.,8,3
+supplement_20.csv,SARBF-Net_Supplementary_Material.docx,20,Table D3. Average ablation error changes and direction counts across six tasks. Δ equally averages the six task-specific relative changes in Table D1. Task directions use three-seed means; seed-pair directions compare the same task and seed.,8,7
+supplement_21.csv,SARBF-Net_Supplementary_Material.docx,21,Table E1. Dataset statistics and chronological splits.,15,7
+supplement_22.csv,SARBF-Net_Supplementary_Material.docx,22,Table E2. Shared architectural settings.,9,2
+supplement_23.csv,SARBF-Net_Supplementary_Material.docx,23,Table E3. Backbone depth and BCIF interfaces by dataset.,15,6
+supplement_24.csv,SARBF-Net_Supplementary_Material.docx,24,Table E4. Dominant forward MAC costs of SAER operations.,4,2
+supplement_25.csv,SARBF-Net_Supplementary_Material.docx,25,Table E5. Additional parameters and dominant forward costs of one BCIF interface.,4,3
+supplement_26.csv,SARBF-Net_Supplementary_Material.docx,26,"Table G1. Test results of the full model and w/o BCIF at each depth. Values are three-seed mean ± sample standard deviation (ddof=1), shown to six decimals. ΔMSE=(w/o BCIF/full model−1)×100%, consistent with Tables 5 and D1; positive values indicate higher error after removing BCIF.",9,7
+supplement_27.csv,SARBF-Net_Supplementary_Material.docx,27,"Table G2. Univariate window-level errors for four forecasting cases. Values are calculated directly from exported point-wise ground truth and predictions; they are not all-variable, full-test-set, or three-seed results.",5,5
+supplement_28.csv,SARBF-Net_Supplementary_Material.docx,28,"Table G3. Test means and sample standard deviations for historical block counts. Counts exclude the recent block. MSE and MAE are mean ± standard deviation (ddof=1), shown to six decimals.",11,5
+supplement_29.csv,SARBF-Net_Supplementary_Material.docx,29,"Table H1. Full efficiency measurements for sixteen models on ECL-720. Time is the mean ± sample standard deviation of three measured epochs (ddof=1). This standard deviation describes epoch variation within one run, not variation across three random seeds.",17,6

@@ -1,0 +1,9 @@
+﻿Setting,Value
+Total observation length (8x),768
+Recent backbone input length x,96
+Historical candidate blocks,7
+Block encoding width,64
+Point-wise embedding width E,16
+BCIF bottleneck width r,16
+Feedback magnitude coefficient ρ,0.1
+Layers and interfaces,K backbone layers; K−1 BCIF interfaces

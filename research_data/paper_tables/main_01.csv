@@ -1,0 +1,7 @@
+﻿Component / configuration,Time complexity,Space complexity
+Feedback projection: dense reference,O(Cd²),O(Cd)
+Feedback projection: low-rank path,O(2Cdr),O(Cd+Cr)
+Forecasting head: unfolded [17],O(F²),O(CEF+Cdff)
+Forecasting head: affine folding,O(F),O(Cdff)
+MHSA [17],O(2C²d+4Cd²),O(nheadC²+Cd)
+Core total: CSL + one BCIF interface,O(C²d+Cd²+Cdr),O(C²+Cd+Cr)

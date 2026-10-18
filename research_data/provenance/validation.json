@@ -1,0 +1,34 @@
+{
+  "main_runs": 168,
+  "main_configurations": 56,
+  "excluded_exchange_runs": 12,
+  "main_seeds": [
+    2021,
+    2022,
+    2023
+  ],
+  "main_paper_rounding_mismatches": [],
+  "saer_mean_records": 240,
+  "saer_configurations": 120,
+  "ablation_mean_records": 42,
+  "depth_seed_records": 48,
+  "history_seed_records": 30,
+  "efficiency_models": 16,
+  "native_paper_tables_exported": 35,
+  "baseline_additional_datasets": [
+    "PEMSD7",
+    "PEMS-BAY"
+  ],
+  "baseline_additional_models": [
+    "CGTFra",
+    "TimeCNN",
+    "OLinear"
+  ],
+  "unavailable_seed_level_records": [
+    "SAER transfer 720 runs",
+    "main ablation variants",
+    "three additional traffic baselines (72 runs)"
+  ],
+  "fact_data_source_verified": "https://github.com/wanghq21/FACT",
+  "fact_download_id": "1MKugRwUKN2u9tIBgES-n3-QOT5l6unLl"
+}

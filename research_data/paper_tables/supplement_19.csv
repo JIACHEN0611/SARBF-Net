@@ -1,0 +1,8 @@
+﻿Variant,Intervention,Retained components
+Full SARBF-Net,None,"SAER, support modulation, and BCIF"
+w/o SAER (BCIF retained),"Remove historical encoding, retrieval, and input correction; use the last 96 steps",Keep BCIF with support fixed to 1; retain the recent-input backbone and head
+Recent-only backbone,Remove SAER and BCIF; use the last 96 steps,Same recent-input backbone and head
+SAER w/o NULL,Normalize weights across the seven historical blocks only,Set historical support m=1 and NULL weight to 0; retain other paths
+SAER only (w/o BCIF),Set all inter-layer feedback T to 0,"Retain historical selection, input correction, and original CSL/ISL layers"
+BCIF w/o m modulation,Set m=1 within BCIF only,Frontend corrections still use the original m
+BCIF w/o self-term balancing,Remove the self-term subtraction weighted by neighborhood support,"Retain relation residuals, bounded projection, and interface addition/subtraction"

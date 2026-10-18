@@ -1,0 +1,4 @@
+﻿Operation,Dominant time complexity
+Shared trend/residual block encoding,O(B C (M+1)(x h+h²))
+Similarity scoring and historical aggregation,O(B C M h)
+Recent input correction MLP,O(B C (h a+a x))

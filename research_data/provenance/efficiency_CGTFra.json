@@ -1,0 +1,939 @@
+{
+  "status": "complete",
+  "model": "CGTFra",
+  "display_name": "CGTFra",
+  "identity": {
+    "protocol": "ECL720-unified-v1-MSE-FP32",
+    "model": "CGTFra",
+    "model_configuration": {
+      "is_training": 1,
+      "model_id": "test",
+      "model": "CGTFra",
+      "data": "ETTh1",
+      "features": "M",
+      "target": "OT",
+      "freq": "h",
+      "checkpoints": "./checkpoints/",
+      "seq_len": 96,
+      "label_len": 48,
+      "pred_len": 720,
+      "enc_in": 321,
+      "dec_in": 321,
+      "c_out": 321,
+      "d_model": 256,
+      "n_heads": 8,
+      "e_layers": 2,
+      "d_layers": 1,
+      "d_ff": 0,
+      "moving_avg": 25,
+      "factor": 1,
+      "distil": true,
+      "dropout": 0.1,
+      "embed": "timeF",
+      "activation": "gelu",
+      "output_attention": null,
+      "do_predict": null,
+      "num_workers": 0,
+      "itr": 1,
+      "train_epochs": 100,
+      "batch_size": 32,
+      "patience": 3,
+      "learning_rate": 0.0005,
+      "des": "test",
+      "loss": "MSE",
+      "lradj": "type1",
+      "use_amp": false,
+      "use_gpu": true,
+      "gpu": 0,
+      "use_multi_gpu": false,
+      "devices": "0,1,2,3",
+      "exp_name": "MTSF",
+      "channel_independence": false,
+      "inverse": false,
+      "class_strategy": "projection",
+      "efficient_training": false,
+      "use_norm": true,
+      "partial_start_index": 0,
+      "nodedim": 32,
+      "hops": 2,
+      "loss_type": "kl",
+      "Lambda": 1,
+      "gcn_dropout": 0.2,
+      "dropout_output": 0.2,
+      "dropout_newadd": 0.2,
+      "horizon": 720,
+      "lr": 0.0005
+    },
+    "data_configuration": {
+      "features": "M",
+      "label_len": 48,
+      "seq_len": 96,
+      "long_len": 768,
+      "pred_len": 720,
+      "embed": "timeF",
+      "freq": "h",
+      "train_ratio": 1.0
+    },
+    "dataset_sha256": "7e45845d54c5219bad0ae6bc1b5316cf8ff9cead5d33fa998a5a51c2e4a497ad",
+    "q_file_sha256": {
+      "electricity_192_ratio0.7.npy": "e11376d665cf9824469b5026fa1d34b912c169f84c81d3238e4db65dfa07acfc",
+      "electricity_336_ratio0.7.npy": "f602d084c3c88c5cea70a8216901391a64bdba3c60bbbb8d5b86adf989ea657a",
+      "electricity_720_ratio0.7.npy": "1003f36e75ebbe7afea5ca57f5c2d09f24363401984e98d0803fc55584e95945",
+      "electricity_96_ratio0.7.npy": "c680221e235d96a99ff7676aa78bb11c225432602356c32d4c5d3619b9c8ff86"
+    },
+    "code_hash": "d2505e8fa20f528ec1ec73b6980191d889b4f7420eaf910575e4f0c1659b4017",
+    "measurement_code_hash": "e8351198d29dc1ce66f2ee13489e0e3d2b425524c0eae2e6ae9773c820b7efec",
+    "extension_code_sha256": "fb344710b5978f097cf918cbbce788c05e78b7645cf629b07848c9d5e01080d9",
+    "dataset_code_hash": "e59969f508907ff133863a21699a510a443aba3c639c93f7ebfc419965ec99ee",
+    "batch_size": 32,
+    "num_workers": 0,
+    "cpu_threads": 8,
+    "precision": "FP32; TF32 disabled",
+    "optimizer": "Adam",
+    "loss": "MSE",
+    "learning_rate": 0.0005,
+    "seed": 2021,
+    "warmup_epochs": 1,
+    "measured_epochs": 3,
+    "torch_version": "2.8.0+cu128",
+    "cuda_version": "12.8",
+    "gpu_uuid": "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "driver": "595.91.07",
+    "allow_remote_desktop": true,
+    "train_samples": 16925,
+    "upstream": "5ea615d72914285345bda6dbb655943b3a58bbcf",
+    "architecture_policy": "Official ECL-720 architecture; all baseline inputs fixed to 96. SRSNet and DUET official 512 is adapted to 96.",
+    "loss_policy": "Pure MSE + Adam. Auxiliary losses are not added; official model forward outputs/branches are retained."
+  },
+  "parameters": 1370036,
+  "real_scalar_parameters": 1370036,
+  "parameters_M": 1.370036,
+  "macs": 632159424.0,
+  "macs_G": 0.632159424,
+  "profile": {
+    "macs": 632159424.0,
+    "matrix_conv_macs": 632159424.0,
+    "extra_macs": {
+      "retrieval_macs": 0,
+      "lag_aggregation_macs": 0,
+      "complex_matrix_extra_macs": 0
+    },
+    "matrix_operation_flops": {
+      "Model.fmr.mlp": {
+        "aten.addmm": 15777792
+      },
+      "Model": {
+        "aten.addmm": 492480768,
+        "aten.bmm": 435245184,
+        "aten.convolution": 336592896
+      },
+      "Model.fmr": {
+        "aten.addmm": 15777792
+      },
+      "Global": {
+        "aten.addmm": 492480768,
+        "aten.bmm": 435245184,
+        "aten.convolution": 336592896
+      },
+      "Model.encoder.attn_layers.0.attention": {
+        "aten.addmm": 168296448,
+        "aten.bmm": 105513984
+      },
+      "Model.encoder": {
+        "aten.addmm": 358369536,
+        "aten.bmm": 435245184,
+        "aten.convolution": 336592896
+      },
+      "Model.encoder.attn_layers.0": {
+        "aten.addmm": 179184768,
+        "aten.bmm": 217622592,
+        "aten.convolution": 168296448
+      },
+      "Model.encoder.attn_layers.0.attention.query_projection": {
+        "aten.addmm": 42074112
+      },
+      "Model.encoder.attn_layers.0.attention.key_projection": {
+        "aten.addmm": 42074112
+      },
+      "Model.encoder.attn_layers.0.attention.value_projection": {
+        "aten.addmm": 42074112
+      },
+      "Model.encoder.attn_layers.0.attention.inner_attention": {
+        "aten.bmm": 105513984
+      },
+      "Model.encoder.attn_layers.0.attention.out_projection": {
+        "aten.addmm": 42074112
+      },
+      "Model.encoder.attn_layers.0.dgl": {
+        "aten.addmm": 10888320,
+        "aten.bmm": 112108608,
+        "aten.convolution": 168296448
+      },
+      "Model.encoder.attn_layers.0.dgl.dynamicGNN": {
+        "aten.addmm": 10888320,
+        "aten.bmm": 112108608,
+        "aten.convolution": 126222336
+      },
+      "Model.encoder.attn_layers.0.dgl.dynamicGNN.nodeEmb_gate1": {
+        "aten.addmm": 184896
+      },
+      "Model.encoder.attn_layers.0.dgl.dynamicGNN.nodeEmb_gate1.0": {
+        "aten.addmm": 184896
+      },
+      "Model.encoder.attn_layers.0.dgl.dynamicGNN.nodeEmb_gate2": {
+        "aten.addmm": 184896
+      },
+      "Model.encoder.attn_layers.0.dgl.dynamicGNN.nodeEmb_gate2.0": {
+        "aten.addmm": 184896
+      },
+      "Model.encoder.attn_layers.0.dgl.dynamicGNN.nodeLinear1": {
+        "aten.addmm": 5259264
+      },
+      "Model.encoder.attn_layers.0.dgl.dynamicGNN.nodeLinear2": {
+        "aten.addmm": 5259264
+      },
+      "Model.encoder.attn_layers.0.dgl.dynamicGNN.mhGNN": {
+        "aten.bmm": 105513984,
+        "aten.convolution": 126222336
+      },
+      "Model.encoder.attn_layers.0.dgl.dynamicGNN.mhGNN.linear": {
+        "aten.convolution": 126222336
+      },
+      "Model.encoder.attn_layers.0.dgl.agg_mlp": {
+        "aten.convolution": 42074112
+      },
+      "Model.encoder.attn_layers.1.attention": {
+        "aten.addmm": 168296448,
+        "aten.bmm": 105513984
+      },
+      "Model.encoder.attn_layers.1.attention.query_projection": {
+        "aten.addmm": 42074112
+      },
+      "Model.encoder.attn_layers.1": {
+        "aten.addmm": 179184768,
+        "aten.bmm": 217622592,
+        "aten.convolution": 168296448
+      },
+      "Model.encoder.attn_layers.1.attention.key_projection": {
+        "aten.addmm": 42074112
+      },
+      "Model.encoder.attn_layers.1.attention.value_projection": {
+        "aten.addmm": 42074112
+      },
+      "Model.encoder.attn_layers.1.attention.inner_attention": {
+        "aten.bmm": 105513984
+      },
+      "Model.encoder.attn_layers.1.attention.out_projection": {
+        "aten.addmm": 42074112
+      },
+      "Model.encoder.attn_layers.1.dgl.dynamicGNN.nodeEmb_gate1.0": {
+        "aten.addmm": 184896
+      },
+      "Model.encoder.attn_layers.1.dgl.dynamicGNN.nodeEmb_gate1": {
+        "aten.addmm": 184896
+      },
+      "Model.encoder.attn_layers.1.dgl": {
+        "aten.addmm": 10888320,
+        "aten.bmm": 112108608,
+        "aten.convolution": 168296448
+      },
+      "Model.encoder.attn_layers.1.dgl.dynamicGNN": {
+        "aten.addmm": 10888320,
+        "aten.bmm": 112108608,
+        "aten.convolution": 126222336
+      },
+      "Model.encoder.attn_layers.1.dgl.dynamicGNN.nodeEmb_gate2.0": {
+        "aten.addmm": 184896
+      },
+      "Model.encoder.attn_layers.1.dgl.dynamicGNN.nodeEmb_gate2": {
+        "aten.addmm": 184896
+      },
+      "Model.encoder.attn_layers.1.dgl.dynamicGNN.nodeLinear1": {
+        "aten.addmm": 5259264
+      },
+      "Model.encoder.attn_layers.1.dgl.dynamicGNN.nodeLinear2": {
+        "aten.addmm": 5259264
+      },
+      "Model.encoder.attn_layers.1.dgl.dynamicGNN.mhGNN": {
+        "aten.bmm": 105513984,
+        "aten.convolution": 126222336
+      },
+      "Model.encoder.attn_layers.1.dgl.dynamicGNN.mhGNN.linear": {
+        "aten.convolution": 126222336
+      },
+      "Model.encoder.attn_layers.1.dgl.agg_mlp": {
+        "aten.convolution": 42074112
+      },
+      "Model.projector": {
+        "aten.addmm": 118333440
+      }
+    },
+    "forward_operator_calls": {
+      "aten.mean.dim": 1,
+      "aten.detach.default": 18,
+      "aten.sub.Tensor": 3,
+      "aten.var.correction": 1,
+      "aten.add.Tensor": 11,
+      "aten.sqrt.default": 1,
+      "aten.div_.Tensor": 3,
+      "aten.permute.default": 50,
+      "aten.clone.default": 3,
+      "aten.view.default": 88,
+      "aten.slice.Tensor": 46,
+      "aten.flip.default": 3,
+      "aten.cat.default": 9,
+      "aten._fft_r2c.default": 1,
+      "aten.view_as_real.default": 1,
+      "aten.arange.default": 2,
+      "aten.unsqueeze.default": 22,
+      "aten.neg.default": 2,
+      "aten.mul.Tensor": 18,
+      "aten.div.Tensor": 3,
+      "aten.cos.default": 2,
+      "aten.sin.default": 2,
+      "aten.select.int": 8,
+      "aten.copy_.default": 6,
+      "aten.softplus.default": 1,
+      "aten.t.default": 18,
+      "aten.addmm.default": 18,
+      "aten.mul_.Tensor": 2,
+      "aten.view_as_complex.default": 1,
+      "aten._fft_c2r.default": 1,
+      "aten.new_zeros.default": 1,
+      "aten.add_.Tensor": 2,
+      "aten.bmm.default": 10,
+      "aten._softmax.default": 4,
+      "aten.native_layer_norm.default": 5,
+      "aten.repeat.default": 6,
+      "aten.tanh.default": 4,
+      "aten.relu.default": 8,
+      "aten.expand.default": 4,
+      "aten._unsafe_view.default": 2,
+      "aten.convolution.default": 4
+    },
+    "fft_operator_calls": {
+      "aten._fft_r2c.default": 1,
+      "aten._fft_c2r.default": 1
+    },
+    "mac_scope": "One-sample eval forward real matrix/conv MACs, plus similarity/retrieval and lag aggregation MACs; complex matrix MACs converted to four real MACs. FFT, spectral elementwise products, normalization, activation, bias addition and other non-MAC operations are excluded. Not total FLOPs."
+  },
+  "training_seconds_epoch_mean": 16.26791961832593,
+  "training_seconds_epoch_std": 0.9414085756764888,
+  "training_seconds_each_epoch": [
+    17.275565910967998,
+    15.410915473010391,
+    16.117277470999397
+  ],
+  "training_peak_allocated_MiB": 1137.84912109375,
+  "epochs": [
+    {
+      "epoch": 1,
+      "seconds": 16.722830541082658,
+      "samples": 16925,
+      "peak_allocated_MiB": 1137.84912109375,
+      "last_batch_MSE": 0.2567964792251587,
+      "measured": false
+    },
+    {
+      "epoch": 2,
+      "seconds": 17.275565910967998,
+      "samples": 16925,
+      "peak_allocated_MiB": 1137.84912109375,
+      "last_batch_MSE": 0.22307562828063965,
+      "measured": true
+    },
+    {
+      "epoch": 3,
+      "seconds": 15.410915473010391,
+      "samples": 16925,
+      "peak_allocated_MiB": 1137.84912109375,
+      "last_batch_MSE": 0.20733225345611572,
+      "measured": true
+    },
+    {
+      "epoch": 4,
+      "seconds": 16.117277470999397,
+      "samples": 16925,
+      "peak_allocated_MiB": 1137.84912109375,
+      "last_batch_MSE": 0.24579812586307526,
+      "measured": true
+    }
+  ],
+  "samples_each_epoch": [
+    16925,
+    16925,
+    16925
+  ],
+  "batches_each_epoch": 529,
+  "batch_size": 32,
+  "actual_history": 96,
+  "anchor_input": 96,
+  "output": 720,
+  "channels": 321,
+  "model_source": "CGTFra.py",
+  "python": "3.9.25 (main, Nov  3 2025, 22:33:05) \n[GCC 11.2.0]",
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+  "cpu_model": "Intel(R) Core(TM) i9-14900KF",
+  "gpu_state_start": {
+    "fields": "temperature_C, SM_clock_MHz, memory_clock_MHz, power_W, GPU_utilization_percent, total_memory_used_MiB",
+    "values": "43, 2542, 13801, 76.90, 0, 1675",
+    "error": ""
+  },
+  "gpu_state_end": {
+    "fields": "temperature_C, SM_clock_MHz, memory_clock_MHz, power_W, GPU_utilization_percent, total_memory_used_MiB",
+    "values": "47, 2542, 13801, 173.82, 39, 3186",
+    "error": ""
+  },
+  "gpu_audit": [
+    {
+      "time": "2026-10-11T09:57:29.832140+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 498"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:57:31.276173+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 702"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:57:36.371140+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:57:41.439279+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:57:46.525857+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:57:48.252232+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:57:48.313569+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:57:53.410432+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:57:58.482359+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:03.552189+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:05.831944+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:05.890982+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:10.981126+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:16.070259+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:21.140307+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:21.545864+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:21.608497+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:26.698420+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:31.784990+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:36.878969+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    },
+    {
+      "time": "2026-10-11T09:58:37.971787+08:00",
+      "compute_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ],
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 3489130",
+          "python",
+          " 2204"
+        ]
+      ],
+      "blocked_processes": [],
+      "allowed_remote_desktop_processes": [
+        [
+          "GPU-ce927a73-9709-f413-44e6-c705f70dc80d",
+          " 22055",
+          " /usr/libexec/gnome-remote-desktop-daemon",
+          " 504"
+        ]
+      ]
+    }
+  ],
+  "completed_at": "2026-10-11T09:58:38.073722+08:00",
+  "timing_scope": "Full train epoch including common long-context data loading, required CPU-to-GPU transfers, decoder input construction, forward, MSE, backward and Adam. Excludes initialization, MAC profiling, validation, checkpoints and nvidia-smi audit calls.",
+  "memory_scope": "PyTorch process peak allocated during measured training epochs; includes model, optimizer, inputs and activations; excludes CUDA context, allocator reserve and desktop/other processes."
+}

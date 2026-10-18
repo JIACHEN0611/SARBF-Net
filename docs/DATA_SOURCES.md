@@ -1,4 +1,4 @@
-# Dataset download sources (checked 2026-10-15)
+# Dataset sources and acquisition instructions
 
 Raw datasets are intentionally excluded from the SARBF-Net release. Download
 prepared benchmark files from the sources below and place them under `dataset/`
@@ -29,11 +29,9 @@ curl -L --fail https://raw.githubusercontent.com/zhouhaoyi/ETDataset/main/ETT-sm
   -o dataset/ETT-small/ETTm1.csv
 ```
 
-The cloud archives themselves were not downloaded/inspected during this
-packaging task. These are maintainer-provided acquisition entry points, not
-proof that every mirror contains the exact historical bytes used in your runs.
-Baidu links were verified as links in the official READMEs; their download pages
-could not be opened by the checking environment.
+The links above identify upstream acquisition channels. For checkpoint replay,
+use the exact dataset version identified by the SHA256 in the experiment record.
+Reformatted or differently processed benchmark files may have different hashes.
 
 Download the original CSV/text/NPZ form expected by the loaders. A parquet export
 or another PEMS/Solar variant is not automatically interchangeable. Check channel
@@ -46,10 +44,54 @@ Do not download an upstream Q file and assume it is the one used by a trained
 SARBF-Net checkpoint. Export the exact matched arrays from the experiment server
 with the collection tool; their hashes are recorded alongside the weights.
 
-## Added traffic assets
+## PEMSD7 and PEMS-BAY
 
-The collector also accepts PEMSD7 and PEMS-BAY task records. Their original data
-are not bundled; retain the precise data bytes identified by each result's hash.
-The new checkpoint evaluator uses the recorded arguments, rather than inventing
-an additional training recipe. For any changed preprocessing in the traffic
-extension source, verify replay against the recorded metrics before publishing.
+We obtained these two datasets from the benchmark archive linked in the
+[official FACT repository](https://github.com/wanghq21/FACT), using its
+[Google Drive data link](https://drive.google.com/file/d/1MKugRwUKN2u9tIBgES-n3-QOT5l6unLl/view).
+The local download was named `FACT_datasets.zip`. The Drive display name may
+change; the file identifier above records the acquisition link.
+
+- PEMSD7: the original `PEMSD7.npy` has shape 228 x 12,672 (variables x time).
+  We orient it as 12,672 x 228 before preparing the NPZ input used in the final
+  traffic experiments. This 228-variable speed dataset is different from
+  the 883-variable traffic-flow dataset PEMS07.
+- PEMS-BAY: the original `PEMS-BAY.csv` contains 52,116 time steps and
+  325 traffic-speed variables. We retain the variable ordering when preparing
+  the final model input.
+
+The final experiments retain the FACT chronological 7:1:2 loader conventions,
+including integer rounding. Target intervals are half-open:
+
+| Dataset | Training | Validation targets | Test targets |
+| --- | --- | --- | --- |
+| PEMSD7 | [0, 8870) | [8870, 10137) | [10138, 12672) |
+| PEMS-BAY | [0, 36481) | [36481, 41693) | [41693, 52116) |
+
+The one-step separation in PEMSD7 follows the recorded loader and is retained
+for consistency. Validation and test inputs may use preceding observations;
+prediction targets remain in their respective partitions. Dataset-level
+standardization is fitted on training data, and reported MSE/MAE are measured
+in that standardized space. Inverse RevIN alone does not restore raw dataset units.
+
+Our additional CGTFra, TimeCNN, and OLinear experiments cover PEMSD7 and
+PEMS-BAY only: 3 models x 2 datasets x 4 horizons x 3 seeds = 72 runs.
+The baseline runs marked with an asterisk do not include PEMS08.
+Their source status is recorded in `research_data/csv/horizon_results_as_reported.csv`.
+
+An earlier experimental branch converted FACT files into a TFB directory.
+Those directory names do not identify an alternative source for the final
+paper's two added datasets. The final experiments use the FACT protocol above.
+
+## Scope and data rights
+
+`research_data/csv/dataset_sources.csv` lists all fourteen datasets used in the
+paper, their dimensions, splits, raw filenames, and acquisition links.
+Exchange appears in older source-code presets and asset records but is not
+one of the fourteen paper datasets and is excluded from the shared main-result CSVs.
+ETT splits apply to the first twenty months, as specified in Supplementary Appendix E.1.
+Solar uses 7:1:2; the different published 6:2:2 results are retained as cross-protocol
+references under the ranking rules in Supplementary Appendix E.2.
+
+We do not redistribute third-party raw benchmark files in this research-data
+archive. Obtain them from the upstream sources and follow their terms.

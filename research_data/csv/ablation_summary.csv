@@ -1,0 +1,43 @@
+﻿dataset,horizon,variant,mse_mean,mse_sd,mse_change_percent_reported,mae_mean,mae_sd,mae_change_percent_reported,n_seeds,record_level,source
+ETTh1,720,SARBF-Net,0.458373,0.002049,0.0,0.462495,0.000511,0.0,3,paper_summary_6dp,Supplement native table 16
+ETTh1,720,w/o SAER,0.462341,0.001348,0.866,0.461502,0.001152,-0.215,3,paper_summary_6dp,Supplement native table 16
+ETTh1,720,w/o SAER & BCIF,0.462325,0.001303,0.862,0.461491,0.001135,-0.217,3,paper_summary_6dp,Supplement native table 16
+ETTh1,720,w/o NULL,0.458296,0.001826,-0.017,0.462314,0.000612,-0.039,3,paper_summary_6dp,Supplement native table 16
+ETTh1,720,w/o BCIF,0.458442,0.002171,0.015,0.462549,0.000605,0.012,3,paper_summary_6dp,Supplement native table 16
+ETTh1,720,w/o m modulation,0.458452,0.002088,0.017,0.462548,0.000517,0.011,3,paper_summary_6dp,Supplement native table 16
+ETTh1,720,w/o Self-balance,0.458376,0.002113,0.001,0.462492,0.000515,-0.001,3,paper_summary_6dp,Supplement native table 16
+ETTm1,96,SARBF-Net,0.288776,0.003076,0.0,0.326843,0.001843,0.0,3,paper_summary_6dp,Supplement native table 16
+ETTm1,96,w/o SAER,0.301479,0.000426,4.399,0.333704,0.000537,2.099,3,paper_summary_6dp,Supplement native table 16
+ETTm1,96,w/o SAER & BCIF,0.301331,0.000173,4.348,0.333474,6.1e-05,2.029,3,paper_summary_6dp,Supplement native table 16
+ETTm1,96,w/o NULL,0.288804,0.003029,0.01,0.326844,0.001784,0.0,3,paper_summary_6dp,Supplement native table 16
+ETTm1,96,w/o BCIF,0.288882,0.002869,0.037,0.326836,0.001772,-0.002,3,paper_summary_6dp,Supplement native table 16
+ETTm1,96,w/o m modulation,0.288808,0.003082,0.011,0.326852,0.001847,0.003,3,paper_summary_6dp,Supplement native table 16
+ETTm1,96,w/o Self-balance,0.288721,0.002908,-0.019,0.326762,0.001804,-0.025,3,paper_summary_6dp,Supplement native table 16
+ECL,720,SARBF-Net,0.182975,0.002434,0.0,0.271641,0.000481,0.0,3,paper_summary_6dp,Supplement native table 17
+ECL,720,w/o SAER,0.191643,0.003125,4.737,0.278896,0.002605,2.671,3,paper_summary_6dp,Supplement native table 17
+ECL,720,w/o SAER & BCIF,0.190929,0.001118,4.347,0.2777,0.001407,2.231,3,paper_summary_6dp,Supplement native table 17
+ECL,720,w/o NULL,0.18347,0.002984,0.271,0.270581,0.001455,-0.39,3,paper_summary_6dp,Supplement native table 17
+ECL,720,w/o BCIF,0.184217,0.002056,0.679,0.272219,0.001187,0.213,3,paper_summary_6dp,Supplement native table 17
+ECL,720,w/o m modulation,0.183716,0.002517,0.405,0.272268,0.000474,0.231,3,paper_summary_6dp,Supplement native table 17
+ECL,720,w/o Self-balance,0.183809,0.002688,0.456,0.272018,0.001673,0.139,3,paper_summary_6dp,Supplement native table 17
+Weather,192,SARBF-Net,0.196327,0.012044,0.0,0.233661,0.007776,0.0,3,paper_summary_6dp,Supplement native table 17
+Weather,192,w/o SAER,0.20251,0.003702,3.149,0.238012,0.00317,1.862,3,paper_summary_6dp,Supplement native table 17
+Weather,192,w/o SAER & BCIF,0.202393,0.00251,3.09,0.238124,0.001803,1.91,3,paper_summary_6dp,Supplement native table 17
+Weather,192,w/o NULL,0.19448,0.006923,-0.941,0.232496,0.001175,-0.499,3,paper_summary_6dp,Supplement native table 17
+Weather,192,w/o BCIF,0.19689,0.00173,0.287,0.236658,0.004241,1.283,3,paper_summary_6dp,Supplement native table 17
+Weather,192,w/o m modulation,0.194987,0.002366,-0.683,0.232923,0.002997,-0.316,3,paper_summary_6dp,Supplement native table 17
+Weather,192,w/o Self-balance,0.198731,0.005585,1.224,0.235149,0.009005,0.637,3,paper_summary_6dp,Supplement native table 17
+Solar,96,SARBF-Net,0.162671,0.005931,0.0,0.187613,0.003804,0.0,3,paper_summary_6dp,Supplement native table 18
+Solar,96,w/o SAER,0.180196,0.000808,10.773,0.19467,0.000122,3.761,3,paper_summary_6dp,Supplement native table 18
+Solar,96,w/o SAER & BCIF,0.180922,0.000825,11.22,0.194636,2.1e-05,3.743,3,paper_summary_6dp,Supplement native table 18
+Solar,96,w/o NULL,0.162253,0.006291,-0.257,0.187355,0.003977,-0.138,3,paper_summary_6dp,Supplement native table 18
+Solar,96,w/o BCIF,0.163191,0.006906,0.32,0.187902,0.003986,0.154,3,paper_summary_6dp,Supplement native table 18
+Solar,96,w/o m modulation,0.161837,0.006638,-0.513,0.186946,0.003695,-0.356,3,paper_summary_6dp,Supplement native table 18
+Solar,96,w/o Self-balance,0.16545,0.013823,1.708,0.188199,0.006933,0.312,3,paper_summary_6dp,Supplement native table 18
+PEMS04,96,SARBF-Net,0.092455,0.000237,0.0,0.189311,0.000346,0.0,3,paper_summary_6dp,Supplement native table 18
+PEMS04,96,w/o SAER,0.123673,0.000104,33.766,0.229185,0.000117,21.063,3,paper_summary_6dp,Supplement native table 18
+PEMS04,96,w/o SAER & BCIF,0.122913,0.001053,32.944,0.228974,0.000305,20.951,3,paper_summary_6dp,Supplement native table 18
+PEMS04,96,w/o NULL,0.09216,0.000485,-0.319,0.189182,0.000373,-0.068,3,paper_summary_6dp,Supplement native table 18
+PEMS04,96,w/o BCIF,0.092799,0.000472,0.372,0.189655,0.000676,0.182,3,paper_summary_6dp,Supplement native table 18
+PEMS04,96,w/o m modulation,0.09249,0.000122,0.038,0.18936,0.000323,0.026,3,paper_summary_6dp,Supplement native table 18
+PEMS04,96,w/o Self-balance,0.092125,0.00067,-0.357,0.189139,0.000379,-0.091,3,paper_summary_6dp,Supplement native table 18

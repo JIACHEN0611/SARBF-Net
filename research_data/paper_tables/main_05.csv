@@ -1,0 +1,9 @@
+﻿Model,Model,DLinear,DLinear,DLinear,DLinear,DLinear,DLinear,TSMixer,TSMixer,TSMixer,TSMixer,TSMixer,TSMixer
+,,Original,Original,+ SAER,+ SAER,Improve ↑,Improve ↑,Original,Original,+ SAER,+ SAER,Improve ↑,Improve ↑
+Dataset,F,MSE,MAE,MSE,MAE,MSE,MAE,MSE,MAE,MSE,MAE,MSE,MAE
+ETTm1,Avg,0.405,0.409,0.367,0.394,9.2%,3.5%,0.522,0.509,0.462,0.477,11.4%,6.2%
+ECL,Avg,0.210,0.296,0.168,0.266,19.9%,10.0%,0.237,0.343,0.226,0.338,4.5%,1.5%
+Solar,Avg,0.328,0.401,0.203,0.269,38.1%,32.8%,0.228,0.305,0.199,0.284,12.8%,7.0%
+Weather,Avg,0.266,0.319,0.227,0.278,14.8%,12.9%,0.245,0.305,0.227,0.291,7.2%,4.7%
+PEMS03,Avg,0.268,0.362,0.099,0.208,63.0%,42.7%,0.116,0.225,0.109,0.218,6.1%,3.2%
+PEMS07,Avg,0.316,0.378,0.090,0.191,71.5%,49.5%,0.114,0.212,0.109,0.205,4.6%,3.3%
